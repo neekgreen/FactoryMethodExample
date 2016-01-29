@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
 
-    public interface ITenantOverride
+    public interface ITenantImplementation
     {
         bool IsForThisTenant(ITenant tenant);
     }

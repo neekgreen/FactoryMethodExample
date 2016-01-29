@@ -3,7 +3,8 @@
     using System;
     using System.Linq;
 
-    public class EmailContentBuilder : IEmailContentBuilder, ITenantOverride
+    [Obsolete ]
+    public class EmailContentBuilder : IEmailContentBuilder, ITenantImplementation, IObsoleteImplementation
     {
         private readonly IContentGenerator someService;
 
@@ -19,7 +20,7 @@
                 MessageBody = this.someService.GenerateContent()
             };
         }
-        bool ITenantOverride.IsForThisTenant(ITenant tenant)
+        bool ITenantImplementation.IsForThisTenant(ITenant tenant)
         {
             return tenant != null && tenant.TenantId == "diamond";
         }

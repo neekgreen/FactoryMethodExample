@@ -8,6 +8,11 @@
     {
         public DefaultRegistry()
         {
+            Scan(scan =>
+            {
+                scan.ExcludeObsoleteTypes();
+            });
+
             For<IContentGenerator>().Use<ContentGenerator>();
         }
     }

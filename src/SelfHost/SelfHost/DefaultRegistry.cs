@@ -11,14 +11,15 @@
         public DefaultRegistry()
         {
             Scan(scan =>
-                {
-                    scan.AssemblyContainingType<Program>();
-                    scan.AssembliesFromApplicationBaseDirectory(t => t.FullName.StartsWith("SomeApp")); 
-                    scan.WithDefaultConventions();
-                    scan.LookForRegistries();
+            {
+                scan.AssemblyContainingType<Program>();
+                scan.AssembliesFromApplicationBaseDirectory(t => t.FullName.StartsWith("SomeApp"));
+                scan.WithDefaultConventions();
+                scan.LookForRegistries();
+                scan.ExcludeObsoleteTypes();
 
-                    scan.AddAllTypesOf<IEmailContentBuilder>();
-                });
+                scan.AddAllTypesOf<IEmailContentBuilder>();
+            });
         }
     }
 }

@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
 
-    public class EmailContentBuilder : IEmailContentBuilder, ITenantOverride
+    public class EmailContentBuilder : IEmailContentBuilder, ITenantImplementation
     {
         EmailContent IEmailContentBuilder.GenerateContent(ITenant tenant)
         {
@@ -12,7 +12,8 @@
                 MessageBody = "This is content for ruby tenant."
             };
         }
-        bool ITenantOverride.IsForThisTenant(ITenant tenant)
+
+        bool ITenantImplementation.IsForThisTenant(ITenant tenant)
         {
             return tenant != null && tenant.TenantId == "ruby";
         }

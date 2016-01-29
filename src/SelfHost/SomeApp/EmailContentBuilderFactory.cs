@@ -41,7 +41,7 @@
         {
             var result =
                 this.emailContentBuilders
-                    .OfType<ITenantOverride>()
+                    .OfType<ITenantImplementation>()
                     .Where(t => t.IsForThisTenant(tenant))
                     .OfType<IEmailContentBuilder>()
                     .FirstOrDefault();
